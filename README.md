@@ -5,15 +5,15 @@ Usage:  python3   ssh_brute.py  [options]   argument
 
 Options:
 
-  -h, --help  show this help message and exit
+      -h, --help  show this help message and exit
 
-  -u USER     Specify User name
+      -u USER     Specify User name
 
-  -H HOST     Specify host name
+      -H HOST     Specify host name
 
-  -p PASSWD   Specify dictionary file
+     -p PASSWD   Specify dictionary file
 
-  -t          Specify if you want to thread the process. Makes it faster but slightly more haphazard
+      -t          Specify if you want to thread the process. Makes it faster but slightly more haphazard
   
 Requirements
 
