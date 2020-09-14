@@ -29,7 +29,6 @@ def connectThread(user, host, passwd):
             pass
 
 def main():
-    print("Remember, a bruteforce tool is only as good as the dictionary bring provided. Make a good dictionary")
     usage = "usage: python3 ssh_brute.py [options] argument use -h for help"
     parser=optparse.OptionParser(usage=usage)
     parser.add_option('-u', dest='user', type='string', help='Specify User name')
@@ -44,6 +43,7 @@ def main():
     if(user==None)| (host==None)|(passwd==None):
         print(parser.usage)
         exit(0)
+    print("Remember, a bruteforce tool is only as good as the dictionary bring provided. Make a good dictionary")
     passwdfile=open(options.passwd,'r')
     if th1:
         print("Doing a threaded bruteforce....")
