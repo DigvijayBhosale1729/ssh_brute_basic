@@ -1,7 +1,7 @@
 # ssh_brute_basic
 A simple ssh bruteforcer written in python
 
-Usage:  python3   ssh_brute.py  [options]   argument
+      Usage: python3   ssh_brute.py  [options]   argument
 
 Options:
 
@@ -23,6 +23,6 @@ pexpect module
 
 Install pexpect by using 
 
-  sudo pip install pexpect
+       sudo pip install pexpect
 
 If pip isn't installed install it along with python-setuptools
